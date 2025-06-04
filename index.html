@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registro de Pacientes</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-light">
+
+  <div class="container">
+      <h2 class="text-center mb-4" id="main-title">Bienvenido al Sistema Del hospital</h2>
+
+    <div id="auth-section" class="form-section active">
+      <ul class="nav nav-tabs mb-4" id="authTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="register-tab" data-bs-toggle="tab" data-bs-target="#register" type="button" role="tab" aria-controls="register" aria-selected="true">Crear Cuenta</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="login-tab" data-bs-toggle="tab" data-bs-target="#login" type="button" role="tab" aria-controls="login" aria-selected="false">Iniciar Sesión</button>
+        </li>
+      </ul>
+      <div class="tab-content" id="authTabContent">
+        <div class="tab-pane fade show active" id="register" role="tabpanel" aria-labelledby="register-tab">
+          <h3 class="mb-3">Crear Cuenta de Usuario</h3>
+          <form id="registerForm">
+            <div class="mb-3">
+              <label for="registerUsername" class="form-label">Nombre de Usuario</label>
+              <input type="text" class="form-control" id="registerUsername" required>
+            </div>
+            <div class="mb-3">
+              <label for="registerEmail" class="form-label">Correo Electrónico</label>
+              <input type="email" class="form-control" id="registerEmail" required>
+            </div>
+            <div class="mb-3 position-relative">
+              <label for="registerPassword" class="form-label">Contraseña (8 caracteres, al menos 1 mayúscula, 1 número, 1 símbolo)</label>
+              <input type="password" class="form-control" id="registerPassword" required>
+              <span class="password-toggle-icon" onclick="togglePasswordVisibility('registerPassword')">
+                <i class="far fa-eye" id="toggleRegisterPassword"></i>
+              </span>
+              <div class="invalid-feedback" id="passwordStrengthFeedback"></div>
+            </div>
+            <button type="submit" class="btn btn-primary">Registrarse</button>
+            <div class="alert-message mt-3" id="registerMessage"></div>
+          </form>
+        </div>
+
+        <div class="tab-pane fade" id="login" role="tabpanel" aria-labelledby="login-tab">
+            <h3 class="mb-3">Iniciar Sesión</h3>
+              <form id="loginForm">
+                <div class="mb-3">
+                  <label for="loginUsernameEmail" class="form-label">Nombre de Usuario o Correo Electrónico</label>
+                  <input type="text" class="form-control" id="loginUsernameEmail" required>
+                </div>
+                <div class="mb-3 position-relative">
+                  <label for="loginPassword" class="form-label">Contraseña</label>
+                  <input type="password" class="form-control" id="loginPassword" required>
+                  <span class="password-toggle-icon" onclick="togglePasswordVisibility('loginPassword')">
+                    <i class="far fa-eye" id="toggleLoginPassword"></i>
+                  </span>
+                </div>
+                <button type="submit" class="btn btn-success">Entrar</button>
+                <a href="#" class="ms-3" id="forgotPasswordLink">¿Olvidaste tu contraseña?</a>
+                <div class="alert-message mt-3" id="loginMessage"></div>
+              </form>
+          </div>
+      </div>
+    </div>
+
+    <div id="main-page-section" class="form-section"></div>
+
+      <div class="container mt-4">
+      <h1 class="text-center text-primary"> Registro de Pacientes - Emergencias</h1>
+
+      <form id="formularioPaciente" class="mt-4">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label">Nombre Completo</label>
+          <input type="text" class="form-control" id="nombre" required minlength="5"/>
+          <div class="invalid-feedback">El documento debe tener al menos 5 caracteres.</div>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">Edad</label>
+          <input type="number" class="form-control" id="edad" required />
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">Género</label>
+          <select class="form-select" id="genero">
+            <option>Hombre</option>
+            <option>Mujer</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Documento de Identidad (CI/Pasaporte):</label>
+          <input type="text" class="form-control" id="documento" required minlength="5"/>
+          <div class="invalid-feedback">El documento debe tener al menos 5 caracteres.</div>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Síntomas</label>
+          <input type="text" class="form-control" id="sintomas" required minlength="5"/>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Tratamiento:</label>
+            <textarea class="form-control" id="Tratamiento" required minlength="5"></textarea>
+            <div class="invalid-feedback">El documento debe tener al menos 5 caracteres.</div>
+        </div>
+        <div class="mb-3">
+            <label for="medicamentos" class="form-label">Medicamentos:</label>
+            <input type="text" class="form-control" id="Medicamentos" required minlength="5">
+            <div class="invalid-feedback">El documento debe tener al menos 5 caracteres.</div>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Exámenes:</label>
+            <select class="form-select" id="Examenes" >
+              <option value="Hemograma">Hemograma</option>
+              <option value="Radiografía">Radiografía</option>
+              <option value="Ecografía">Ecografía</option>
+              <option value="Análisis de Orina">Análisis de Orina</option>
+              <option value="Tomografía">Tomografía</option>
+              <option value="Resonancia Magnética">Resonancia Magnética</option>
+            </select>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Gravedad</label>
+          <select class="form-select" id="gravedad">
+            <option value="leve">🟩 Leve</option>
+            <option value="moderado">🟨 Moderado</option>
+            <option value="urgente">🟧 Urgente</option>
+            <option value="critico">🟥 Crítico</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-success mt-3">Registrar Paciente</button>
+    </form>
+
+    <hr class="my-4" />
+  <div class="card p-4 d-none" id="patient-list-section"></div>
+      <h2 class="text-center">📑 Lista de Pacientes</h2>
+      <div class="row mb-3">
+                <div class="col-md-3">
+                    <div class="alert alert-success text-center" role="alert">
+                        Leve: <span id="count-leve">0</span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="alert alert-warning text-center" role="alert">
+                        Moderado: <span id="count-moderado">0</span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="alert alert-danger text-center" role="alert">
+                        Urgente: <span id="count-urgente">0</span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="alert alert-dark text-center" role="alert">
+                        Crítico: <span id="count-critico">0</span>
+                    </div>
+                </div>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-bordered mt-3">
+          <thead class="table-dark">
+            <tr>
+             <th>Nombre</th>
+             <th>Edad</th>
+             <th>Género</th>
+             <th>Documento</th>
+             <th>Síntomas</th>
+             <th>Tratamiento</th>
+             <th>Medicamentos</th>
+             <th>Examenes</th>
+             <th>Gravedad</th>
+             <th>Acción</th>
+            </tr>
+          </thead>
+          <tbody id="tablaPacientes"></tbody>
+        </table>
+      </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

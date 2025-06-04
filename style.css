@@ -1,0 +1,62 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: rgb(1, 221, 221);
+}
+
+.container {
+  max-width: 800px;
+  margin-top: 50px;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.form-section {
+  display: none; /* Hidden by default */
+}
+.form-section.active {
+  display: block;
+}
+.password-toggle-icon {
+  cursor: pointer;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.alert-message {
+margin-top: 15px;
+}
+
+.triaje-leve {
+  background-color: #d4edda;
+}
+
+.triaje-moderado {
+  background-color: #fff3cd;
+}
+
+.triaje-urgente {
+  background-color: #ffeeba;
+}
+
+.triaje-critico {
+  background-color: #f8d7da;
+  font-weight: bold;
+  animation: parpadeo 1s infinite alternate;
+}
+
+.alert-critico {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1050;
+    width: 300px;
+    text-align: center;
+    animation: fadeOut 5s forwards;
+}
+
+@keyframes parpadeo {
+  from { background-color: #f8d7da; }
+  to { background-color: #f5c6cb; }
+}
